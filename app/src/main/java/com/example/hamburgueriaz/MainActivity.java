@@ -2,6 +2,7 @@ package com.example.hamburgueriaz;
 
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView;
     private TextView mTextViewQntCompra;
     private EditText mEditText;
+    private Button mButtomSoma;
+    private Button mButtomSubtrai;
     private Button mButtom;
 
     @Override
@@ -38,19 +41,22 @@ public class MainActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.textView);
         mTextView = findViewById(R.id.textView4);
         mTextView = findViewById(R.id.textView5);
-
         mTextViewQntCompra = findViewById(R.id.textView3);
-
         mEditText = findViewById(R.id.editTextText);
-
-        mButtom = findViewById(R.id.button);
-        mButtom = findViewById(R.id.button2);
+        //mButtomSoma = findViewById(R.id.button);
+        mButtomSubtrai = findViewById(R.id.button2);
         mButtom = findViewById(R.id.button3);
 
 
+
+        Button buttonSoma = (Button) findViewById(R.id.button);
+        buttonSoma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("clicou");
+            }
+        });
     }
-
-
 
 
 }
