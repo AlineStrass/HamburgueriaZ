@@ -1,14 +1,26 @@
 package com.example.hamburgueriaz;
 
 import android.os.Bundle;
-
+import android.text.InputFilter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.widget.RadioGroup;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    //instanciando objetos das views que irão ter alguma interação.
+    private TextView mTextView;
+    private TextView mTextViewQntCompra;
+    private EditText mEditText;
+    private Button mButtom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +32,25 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //Relacionando com o id que foi cadastrado no arquivo xml
+        mTextView = findViewById(R.id.textView2);
+        mTextView = findViewById(R.id.textView);
+        mTextView = findViewById(R.id.textView4);
+        mTextView = findViewById(R.id.textView5);
+
+        mTextViewQntCompra = findViewById(R.id.textView3);
+
+        mEditText = findViewById(R.id.editTextText);
+
+        mButtom = findViewById(R.id.button);
+        mButtom = findViewById(R.id.button2);
+        mButtom = findViewById(R.id.button3);
+
+
     }
+
+
+
+
 }
