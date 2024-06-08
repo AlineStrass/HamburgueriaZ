@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtomSubtrai;
     private Button mButtomPedido;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +54,34 @@ public class MainActivity extends AppCompatActivity {
         mButtomSoma.setOnClickListener(new View.OnClickListener() {
             @Override
                     public void onClick(View v){
-                Toast.makeText(MainActivity.this, "aumentar", Toast.LENGTH_SHORT).show();
-            }
+                //mensagem de teste
+                //Toast.makeText(MainActivity.this, "aumentar", Toast.LENGTH_SHORT).show();
+                int valor;
+                mTextViewQntCompra.getText().toString();
+                //converte a string em inteiro
+                valor =  Integer.parseInt(mTextViewQntCompra.getText().toString());
+                valor = valor + 1;
 
+                String converteValor = String.valueOf(valor);
+                mTextViewQntCompra.setText(converteValor);
+            }
         });
 
         mButtomSubtrai.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Toast.makeText(MainActivity.this, "diminuir", Toast.LENGTH_SHORT).show();
+
+                int valor;
+                mTextViewQntCompra.getText().toString();
+                valor =  Integer.parseInt(mTextViewQntCompra.getText().toString());
+
+                if (valor > 0){
+                    valor = valor - 1;
+                }
+
+                String converteValor = String.valueOf(valor);
+                mTextViewQntCompra.setText(converteValor);
             }
         });
 
@@ -70,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "comprar", Toast.LENGTH_SHORT).show();
             }
-           
+
         });
 
 
