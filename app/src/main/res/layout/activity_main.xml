@@ -69,14 +69,14 @@
     <CheckBox
         android:id="@+id/checkBox"
         style="@style/CheckBox"
-        android:text="VegBurguer"
+        android:text="Batata Frita"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         style="@style/CheckBox"
-        android:text="NaturalBurguer"
+        android:text="Anéis de Cebola"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
     <CheckBox
         android:id="@+id/checkBox3"
         style="@style/CheckBox"
-        android:text="ShitaqueBurguer"
+        android:text="Molho especial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"

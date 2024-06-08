@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditText;
     private Button mButtomSoma;
     private Button mButtomSubtrai;
-    private Button mButtom;
+    private Button mButtomPedido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +44,40 @@ public class MainActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.textView5);
         mTextViewQntCompra = findViewById(R.id.textView3);
         mEditText = findViewById(R.id.editTextText);
-        //mButtomSoma = findViewById(R.id.button);
+        mButtomSoma = findViewById(R.id.button);
         mButtomSubtrai = findViewById(R.id.button2);
-        mButtom = findViewById(R.id.button3);
+        mButtomPedido = findViewById(R.id.button3);
 
 
 
-        Button buttonSoma = (Button) findViewById(R.id.button);
-        buttonSoma.setOnClickListener(new View.OnClickListener() {
+        mButtomSoma.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                System.out.println("clicou");
+                    public void onClick(View v){
+                Toast.makeText(MainActivity.this, "aumentar", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        mButtomSubtrai.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(MainActivity.this, "diminuir", Toast.LENGTH_SHORT).show();
             }
         });
+
+        mButtomPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "comprar", Toast.LENGTH_SHORT).show();
+            }
+           
+        });
+
+
+
+
+
+
     }
 
 
