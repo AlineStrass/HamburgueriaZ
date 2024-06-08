@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox mCheckBox02;
     private CheckBox mCheckBox03;
 
+    int precoTotal;;
+    int totalAdicional;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Relacionando com o id que foi cadastrado no arquivo xml
-        mTextView = findViewById(R.id.textView2);
-        mTextView = findViewById(R.id.textView);
-        mTextView = findViewById(R.id.textView4);
         mTextViewTotalCompra = findViewById(R.id.textView5);
         mTextViewQntCompra = findViewById(R.id.textView3);
         mEditText = findViewById(R.id.editTextText);
@@ -101,20 +102,31 @@ public class MainActivity extends AppCompatActivity {
         mCheckBox01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int adicional = 0;
-                int precoTotal = 20;
                 if (mCheckBox01.isChecked()) {
-                    adicional = adicional + 2;
-                    Toast.makeText(MainActivity.this, "opcao 1", Toast.LENGTH_SHORT).show();
+                    totalAdicional = totalAdicional + 2;
+                    //converte para string
+                    String converteValor = String.valueOf(totalAdicional);
+                    //adiciona a info ao campo
+                    mTextViewTotalCompra.setText(converteValor);
+
+                }else if (!mCheckBox01.isChecked()){
+                    totalAdicional = totalAdicional - 2;
+                    String converteValor = String.valueOf(totalAdicional);
+                    mTextViewTotalCompra.setText(converteValor);
                 }
+
 
         mCheckBox02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int adicional = 0;
                 if (mCheckBox02.isChecked()) {
-                    adicional = adicional + 2;
-                    Toast.makeText(MainActivity.this, "opcao 2", Toast.LENGTH_SHORT).show();
+                    totalAdicional = totalAdicional + 2;
+                    String convertValor2 = String.valueOf(totalAdicional);
+                    mTextViewTotalCompra.setText((convertValor2));
+                } else if (!mCheckBox02.isChecked()) {
+                    totalAdicional = totalAdicional - 2;
+                    String converteValor2 = String.valueOf(totalAdicional);
+                    mTextViewTotalCompra.setText(converteValor2);
                 }
             }
         });
@@ -122,31 +134,33 @@ public class MainActivity extends AppCompatActivity {
         mCheckBox03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int adicional = 0;
                 if (mCheckBox03.isChecked()) {
-                    adicional = adicional + 3;
-                    Toast.makeText(MainActivity.this, "opcao 3", Toast.LENGTH_SHORT).show();
+                    totalAdicional = totalAdicional + 3;
+                    String convertValor3 = String.valueOf(totalAdicional);
+                    mTextViewTotalCompra.setText(convertValor3);
+                    //Toast.makeText(MainActivity.this, "opcao 3", Toast.LENGTH_SHORT).show();
+                } else if (!mCheckBox03.isChecked()) {
+                    totalAdicional = totalAdicional - 3;
+                    String convertValor3 = String.valueOf(totalAdicional);
+                    mTextViewTotalCompra.setText(convertValor3);
                 }
             }
         });
 
 
-                precoTotal = precoTotal + adicional;
-
+                //precoTotal = totalAdicional + 20;
                 //int converteTotal = Integer.valueOf(precoTotal);
                // mTextViewQntCompra.setText(converteTotal);
 
             }
         });
 
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
 
 }
