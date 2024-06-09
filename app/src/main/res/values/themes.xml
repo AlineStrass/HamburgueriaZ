@@ -91,4 +91,10 @@
     <style name="ButtomFazerPedido" parent="Button">
         <item name="android:layout_marginStart">8dp</item>
     </style>
+
+    <style name="BottonFinalizarVoltar" parent="Button">
+        <item name="android:layout_width">138dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">28dp</item>
+    </style>
 </resources>
