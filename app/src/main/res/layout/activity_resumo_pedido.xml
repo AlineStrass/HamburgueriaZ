@@ -74,7 +74,7 @@
         style="@style/EstiloTexto"
         android:text="nome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textViewLogo" />
 
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonFinalizar"
         style="@style/BottonFinalizarVoltar"
         android:layout_marginStart="36dp"
         android:text="finalizar"
@@ -134,13 +134,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonVoltar"
         style="@style/BottonFinalizarVoltar"
         android:text="voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/buttonFinalizar"
         app:layout_constraintTop_toBottomOf="@+id/textView18"
         app:layout_constraintVertical_bias="0.0" />
 

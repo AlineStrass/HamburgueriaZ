@@ -1,6 +1,8 @@
 package com.example.hamburgueriaz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+    //criar um arquivo "meus dados" para salvar o nome do cliente
+    public static final String ARQUIVO_MEUS_DADOS = "MeusDados";
 
     //instanciando objetos das views que irão ter alguma interação.
     private TextView mTextView;
@@ -92,11 +96,10 @@ public class MainActivity extends AppCompatActivity {
         mButtomPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "comprar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "fazer pedido", Toast.LENGTH_SHORT).show();
                 //chamar a view Finalizar pedido
               Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
               startActivity(intent);
-
             }
 
         });
@@ -157,8 +160,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //captura o dado
+        mEditText.getText().toString();
+        //instanciar um objeto SharedPreferences (para salvar informações)
+        SharedPreferences sharedPreferences =
+                //informa o arquivo onde será salvo e qual o tipo de acesso
+                getSharedPreferences(ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        String nome = "nome";
+        String salvarNome = sharedPreferences.getString(String.valueOf(nome), "nome do cliente");
+        //depois de termos o novo dado, chamamos o editor
+        sharedPreferences.edit()
+                //coloca o novo dado e aplica a alteração
+                .putString(String.valueOf(nome), salvarNome)
+                .apply();
     }
+
+
 
 
 
