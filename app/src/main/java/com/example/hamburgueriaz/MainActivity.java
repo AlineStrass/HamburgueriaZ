@@ -1,5 +1,6 @@
 package com.example.hamburgueriaz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -91,8 +92,10 @@ public class MainActivity extends AppCompatActivity {
         mButtomPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "comprar", Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(MainActivity.this, "comprar", Toast.LENGTH_SHORT).show();
+                //chamar a view Finalizar pedido
+              Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
+              startActivity(intent);
 
             }
 
@@ -156,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 
 
