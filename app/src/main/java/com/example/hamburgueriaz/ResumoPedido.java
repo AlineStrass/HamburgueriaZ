@@ -35,9 +35,9 @@ public class ResumoPedido extends AppCompatActivity {
             return insets;
         });
 
-     mButtonFinaliar = findViewById(R.id.buttonFinalizar);
-     mButtonVoltar = findViewById(R.id.buttonVoltar);
-     mTextviewNomeCliente = findViewById(R.id.textView7);
+        mButtonFinaliar = findViewById(R.id.buttonFinalizar);
+        mButtonVoltar = findViewById(R.id.buttonVoltar);
+        mTextviewNomeCliente = findViewById(R.id.textView13);
 
 
         //função para chamar o e-mail
@@ -57,7 +57,6 @@ public class ResumoPedido extends AppCompatActivity {
                 startActivity(internt);
             }
         });
-
     }
 
     //trazer os dados do pedido

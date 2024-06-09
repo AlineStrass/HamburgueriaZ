@@ -59,8 +59,8 @@
     <EditText
         android:id="@+id/editTextText"
         style="@style/EditTextInput"
+        android:hint="Nome"
         android:inputType="textCapCharacters"
-        android:text="Nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,6 +146,7 @@
         android:id="@+id/button3"
         style="@style/ButtomFazerPedido"
         android:text="Fazer pedido"
+        android:onClick="botaoFazerPedido"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"

@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     int precoTotal;;
     int totalAdicional;
+    //String nomeCliente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,17 +95,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mButtomPedido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "fazer pedido", Toast.LENGTH_SHORT).show();
-                //chamar a view Finalizar pedido
-              Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
-              startActivity(intent);
-            }
-
-        });
-
         mCheckBox01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,32 +142,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-                //precoTotal = totalAdicional + 20;
-                //int converteTotal = Integer.valueOf(precoTotal);
-               // mTextViewQntCompra.setText(converteTotal);
-
             }
         });
 
-        //captura o dado
-        mEditText.getText().toString();
-        //instanciar um objeto SharedPreferences (para salvar informações)
-        SharedPreferences sharedPreferences =
-                //informa o arquivo onde será salvo e qual o tipo de acesso
-                getSharedPreferences(ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
-        String nome = "nome";
-        String salvarNome = sharedPreferences.getString(String.valueOf(nome), "nome do cliente");
-        //depois de termos o novo dado, chamamos o editor
-        sharedPreferences.edit()
-                //coloca o novo dado e aplica a alteração
-                .putString(String.valueOf(nome), salvarNome)
-                .apply();
+        mButtomPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nomeCliente = mEditText.getText().toString();;
+                mEditText.setText(nomeCliente);
+                Toast.makeText(MainActivity.this, "fazer pedido "+nomeCliente, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
+                startActivity(intent);
+            }
+
+            //salvando o nome no bancode dados local
+            public void adicionarNome(String nomeCliente) {
+                SharedPreferences sharedPreferences = getSharedPreferences(ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+                String campoNome = sharedPreferences.getString(String.valueOf(nomeCliente), null);
+                String nomeDigitado = campoNome;
+                sharedPreferences.edit().putString(String.valueOf(nomeCliente), nomeDigitado).apply();
+                Toast.makeText(MainActivity.this, "bd "+ nomeDigitado, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
-
+    
 
 
 
