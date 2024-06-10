@@ -1,9 +1,12 @@
 package com.example.hamburgueriaz;
 
+import static java.net.Proxy.Type.HTTP;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -12,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Scanner;
 import java.util.prefs.Preferences;
-
+import java.net.Proxy;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
@@ -48,7 +51,14 @@ public class ResumoPedido extends AppCompatActivity {
         mButtonFinaliar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ResumoPedido.this, "finalizar", Toast.LENGTH_SHORT).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"pedidos@hamburgueriaz.com"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Confirmação de pedido - Hamburgueria Z");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Seguem as informações doseu pedido: ");
+                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"));
+
+                startActivity(emailIntent);
             }
         });
 
