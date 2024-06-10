@@ -5,13 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Scanner;
+import java.util.prefs.Preferences;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,7 +25,7 @@ public class ResumoPedido extends AppCompatActivity {
     private Button mButtonFinaliar;
     private Button mButtonVoltar;
     private TextView mTextviewNomeCliente;
-
+    String nomeCliente;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,6 +52,17 @@ public class ResumoPedido extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
+
+
+
+
+
+
         //voltar para a view principal
         mButtonVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,15 +74,53 @@ public class ResumoPedido extends AppCompatActivity {
         });
     }
 
+
+
+    // -------------------------------------------------------------------------------------------
+    //TENTATIVAS DE TRAZER O NOME DO CLIENTE PARA APARCER NA VIEW DO RESUMO DO PEDIDO - NADA FUNCIONOU :(
+
+/*    @SuppressLint("ResourceType")
+    private void exibeNome(String nome){
+        @SuppressLint("ResourceType")
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.id.editTextText), mTextviewNomeCliente.getText().toString());
+        editor.apply();
+
+        sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+        String result = sharedPreferences.getString(getString(R.id.editTextText), null);
+
+        Toast.makeText(ResumoPedido.this, "result :  "+ result, Toast.LENGTH_SHORT).show();
+    }
+*/
+
+
     //trazer os dados do pedido
     //trazer nome do cliente
-    private void exibeNome(String nome){
+ /*  private void exibeNome(String nome){
         //acessa o arquivo onde as infos estao salvas
-        SharedPreferences sharedPreferences =
-                getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+
         //cria um objeto para trazer o dado salvo
-        String nomeCliente = sharedPreferences.getString(String.valueOf(nome), "nome do cliente");
+        String nomeCliente = sharedPreferences.getString(nome, "nome do cliente");
         //exibe o valor na tela
         mTextviewNomeCliente.setText(nomeCliente);
+        //return nomeCliente;
     }
+    */
+
+    private void alteraNome(String nomeCliente){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        String nomeAtual = sharedPreferences.getString(String.valueOf(nomeCliente), null);
+        String novoNome = nomeAtual;
+        sharedPreferences.edit().putString(String.valueOf(nomeCliente), novoNome).apply();
+    }
+
+    private void exibeNome(String nomeCliente){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        String nome = sharedPreferences.getString(String.valueOf(nomeCliente), null);
+        mTextviewNomeCliente.setText(nome);
+    }
+
+
 }

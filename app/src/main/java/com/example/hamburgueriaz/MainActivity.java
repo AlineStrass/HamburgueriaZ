@@ -1,5 +1,6 @@
 package com.example.hamburgueriaz;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -146,26 +147,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mButtomPedido.setOnClickListener(new View.OnClickListener() {
+           // @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                String nomeCliente = mEditText.getText().toString();;
+                String nomeCliente = mEditText.getText().toString();
                 mEditText.setText(nomeCliente);
+                if (!nomeCliente.isEmpty()) {
+                    getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE)
+                            .edit().putString("nomeCliente", nomeCliente).apply();
+                }
+
+
+/*                @SuppressLint("ResourceType")
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(getString(R.id.editTextText), mEditText.getText().toString());
+                editor.apply();
+                sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+                String result = sharedPreferences.getString(getString(R.id.editTextText), null);
+*/
+                //Toast.makeText(MainActivity.this, "result :  "+ result, Toast.LENGTH_SHORT).show();
+
                 Toast.makeText(MainActivity.this, "fazer pedido "+nomeCliente, Toast.LENGTH_SHORT).show();
+
+
                 Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
                 startActivity(intent);
+
             }
 
             //salvando o nome no bancode dados local
-            public void adicionarNome(String nomeCliente) {
+        /*    public void adicionarNome(String nomeCliente) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
                 String campoNome = sharedPreferences.getString(String.valueOf(nomeCliente), null);
                 String nomeDigitado = campoNome;
                 sharedPreferences.edit().putString(String.valueOf(nomeCliente), nomeDigitado).apply();
-                Toast.makeText(MainActivity.this, "bd "+ nomeDigitado, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "teste "+ campoNome, Toast.LENGTH_SHORT).show();
             }
+            */
         });
     }
-    
+
 
 
 
