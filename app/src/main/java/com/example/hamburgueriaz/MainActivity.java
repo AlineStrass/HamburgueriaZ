@@ -1,6 +1,7 @@
 package com.example.hamburgueriaz;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     //adiciona a info ao campo
                     mTextViewTotalCompra.setText(converteValor);
 
+
                 }else if (!mCheckBox01.isChecked()){
                     totalAdicional = totalAdicional - 2;
                     String converteValor = String.valueOf(totalAdicional);
@@ -151,24 +153,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nomeCliente = mEditText.getText().toString();
-                mEditText.setText(nomeCliente);
                 if (!nomeCliente.isEmpty()) {
                     getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE)
                             .edit().putString("nomeCliente", nomeCliente).apply();
                 }
+                mEditText.setText(nomeCliente);
 
-
-/*                @SuppressLint("ResourceType")
-                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(getString(R.id.editTextText), mEditText.getText().toString());
-                editor.apply();
-                sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
-                String result = sharedPreferences.getString(getString(R.id.editTextText), null);
-*/
-                //Toast.makeText(MainActivity.this, "result :  "+ result, Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(MainActivity.this, "fazer pedido "+nomeCliente, Toast.LENGTH_SHORT).show();
+                //o nome do cliente que foi digitado aparece na mensagem
+                Toast.makeText(MainActivity.this, "fazer pedido "+ nomeCliente, Toast.LENGTH_SHORT).show();
 
 
                 Intent intent = new Intent(getBaseContext(), ResumoPedido.class);
@@ -176,7 +168,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            //salvando o nome no bancode dados local
+            //salvando o nome no banco de dados local
+/*            private void gravarDados(){
+                SharedPreferences sharedPreferences = getSharedPreferences("MeusDados", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("nome", "nomeCliente");
+                editor.apply();
+            }
+*/
+
+            //Toast.makeText(MainActivity.this, "resultado nome cliente :  "+ nomeCliente, Toast.LENGTH_SHORT).show();
+/*
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(getString(R.id.editTextText), mEditText.getText().toString());
+                editor.apply();
+                sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
+                String result = sharedPreferences.getString(getString(R.id.editTextText), null);
+*/
+            //Toast.makeText(MainActivity.this, "result :  "+ result, Toast.LENGTH_SHORT).show();
+
         /*    public void adicionarNome(String nomeCliente) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
                 String campoNome = sharedPreferences.getString(String.valueOf(nomeCliente), null);

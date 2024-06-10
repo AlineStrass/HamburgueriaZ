@@ -1,7 +1,6 @@
 package com.example.hamburgueriaz;
 
 import static java.net.Proxy.Type.HTTP;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -28,9 +27,9 @@ public class ResumoPedido extends AppCompatActivity {
     private Button mButtonFinaliar;
     private Button mButtonVoltar;
     private TextView mTextviewNomeCliente;
-    String nomeCliente;
+    //String nomeCliente;
 
-    @SuppressLint("MissingInflatedId")
+    //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,27 +50,18 @@ public class ResumoPedido extends AppCompatActivity {
         mButtonFinaliar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(ResumoPedido.this, "finalizar", Toast.LENGTH_SHORT).show();
+
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setType("text/plain");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"pedidos@hamburgueriaz.com"});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Confirmação de pedido - Hamburgueria Z");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Seguem as informações doseu pedido: ");
-                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Confirmação de pedido");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Seguem as informações do seu pedido:");
 
                 startActivity(emailIntent);
+
             }
         });
-
-
-
-
-
-
-
-
-
-
-
 
         //voltar para a view principal
         mButtonVoltar.setOnClickListener(new View.OnClickListener() {
@@ -82,14 +72,58 @@ public class ResumoPedido extends AppCompatActivity {
                 startActivity(internt);
             }
         });
+
+
+    }
+
+
+    private void localizarDados(){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, MODE_PRIVATE);
+        String cliente = sharedPreferences.getString("nomeCliente", "nomeCliente");
+        mTextviewNomeCliente.getText();
     }
 
 
 
-    // -------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------//
+
     //TENTATIVAS DE TRAZER O NOME DO CLIENTE PARA APARCER NA VIEW DO RESUMO DO PEDIDO - NADA FUNCIONOU :(
 
-/*    @SuppressLint("ResourceType")
+
+    //trazer os dados do pedido
+    //trazer nome do cliente
+ /*  private void exibeNome(String nome){
+        //acessa o arquivo onde as infos estao salvas
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+
+        //cria um objeto para trazer o dado salvo
+        String nomeCliente = sharedPreferences.getString(nome, "nome do cliente");
+        //exibe o valor na tela
+        mTextviewNomeCliente.setText(nomeCliente);
+    }
+    */
+
+// ------------------------------------------------ //
+
+
+/*    private void alteraNome(String nomeCliente){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        String nomeAtual = sharedPreferences.getString(String.valueOf(nomeCliente), null);
+        String novoNome = nomeAtual;
+        sharedPreferences.edit().putString(String.valueOf(nomeCliente), novoNome).apply();
+    } */
+
+ /*   private void exibeNome(String nomeCliente){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
+        String nome = sharedPreferences.getString(String.valueOf(nomeCliente), null);
+        mTextviewNomeCliente.setText(nome);
+    } */
+
+
+// ------------------------------------------------ //
+
+
+    /*    @SuppressLint("ResourceType")
     private void exibeNome(String nome){
         @SuppressLint("ResourceType")
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.id.editTextText), Context.MODE_PRIVATE);
@@ -103,34 +137,6 @@ public class ResumoPedido extends AppCompatActivity {
         Toast.makeText(ResumoPedido.this, "result :  "+ result, Toast.LENGTH_SHORT).show();
     }
 */
-
-
-    //trazer os dados do pedido
-    //trazer nome do cliente
- /*  private void exibeNome(String nome){
-        //acessa o arquivo onde as infos estao salvas
-        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
-
-        //cria um objeto para trazer o dado salvo
-        String nomeCliente = sharedPreferences.getString(nome, "nome do cliente");
-        //exibe o valor na tela
-        mTextviewNomeCliente.setText(nomeCliente);
-        //return nomeCliente;
-    }
-    */
-
-    private void alteraNome(String nomeCliente){
-        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
-        String nomeAtual = sharedPreferences.getString(String.valueOf(nomeCliente), null);
-        String novoNome = nomeAtual;
-        sharedPreferences.edit().putString(String.valueOf(nomeCliente), novoNome).apply();
-    }
-
-    private void exibeNome(String nomeCliente){
-        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.ARQUIVO_MEUS_DADOS, Context.MODE_PRIVATE);
-        String nome = sharedPreferences.getString(String.valueOf(nomeCliente), null);
-        mTextviewNomeCliente.setText(nome);
-    }
 
 
 }
